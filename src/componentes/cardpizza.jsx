@@ -1,35 +1,34 @@
 const CardPizza = ({ name, price, ingredients, img }) => {
   return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        borderRadius: "10px",
-        padding: "10px",
-        width: "250px",
-        textAlign: "center",
-        backgroundColor: "#fff",
-        boxShadow: "0 2px 5px rgba(0,0,0,0.1)"
-      }}
-    >
-      <img src={img} alt={name} width="100%" />
+    <div className="card h-100 shadow-sm">
+      <img src={img} className="card-img-top" alt={name} />
 
-      <h3>{name}</h3>
-      <hr />
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title text-center">{name}</h5>
 
-      <p><strong>Ingredientes:</strong></p>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {ingredients.map((ing, i) => (
-          <li key={i}>🍕 {ing}</li>
-        ))}
-      </ul>
+        <hr />
 
-      <hr />
+        <p className="fw-bold mb-1">Ingredientes:</p>
+        <ul className="list-unstyled">
+          {ingredients.map((ing, i) => (
+            <li key={i}>🍕 {ing}</li>
+          ))}
+        </ul>
 
-      <p><strong>Precio:</strong> ${price.toLocaleString("es-CL")}</p>
+        <hr />
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button>Ver más 👀</button>
-        <button>Añadir 🛒</button>
+        <p className="text-center fw-bold">
+          ${price.toLocaleString("es-CL")}
+        </p>
+
+        <div className="d-flex justify-content-between mt-auto">
+          <button className="btn btn-outline-dark btn-sm">
+            Ver más 👀
+          </button>
+          <button className="btn btn-dark btn-sm">
+            Añadir 🛒
+          </button>
+        </div>
       </div>
     </div>
   );

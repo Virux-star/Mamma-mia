@@ -4,67 +4,70 @@ import { pizzaCart } from "../data/pizzas";
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart);
 
-  // ➕ Aumentar cantidad
   const aumentar = (id) => {
-    setCart(
-      cart.map((p) =>
-        p.id === id ? { ...p, count: p.count + 1 } : p
-      )
-    );
+    setCart(cart.map(p =>
+      p.id === id ? { ...p, count: p.count + 1 } : p
+    ));
   };
 
-  // ➖ Disminuir cantidad
   const disminuir = (id) => {
     setCart(
       cart
-        .map((p) =>
+        .map(p =>
           p.id === id ? { ...p, count: p.count - 1 } : p
         )
-        .filter((p) => p.count > 0) // elimina si queda en 0
+        .filter(p => p.count > 0)
     );
   };
 
-  // 💰 Calcular total
   const total = cart.reduce(
     (acc, p) => acc + p.price * p.count,
     0
   );
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>🛒 Carrito de compras</h2>
+    <div className="container">
+      <h2 className="mb-4">🛒 Carrito de compras</h2>
 
       {cart.map((pizza) => (
         <div
           key={pizza.id}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderBottom: "1px solid #ccc",
-            padding: "10px 0",
-          }}
+          className="d-flex justify-content-between align-items-center border-bottom py-3"
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="d-flex align-items-center gap-3">
             <img src={pizza.img} alt={pizza.name} width="60" />
-            <p>{pizza.name}</p>
+            <span>{pizza.name}</span>
           </div>
 
-          <p>${pizza.price.toLocaleString("es-CL")}</p>
+          <span>${pizza.price.toLocaleString("es-CL")}</span>
 
           <div>
-            <button onClick={() => disminuir(pizza.id)}>➖</button>
-            <span style={{ margin: "0 10px" }}>{pizza.count}</span>
-            <button onClick={() => aumentar(pizza.id)}>➕</button>
+            <button
+              className="btn btn-outline-danger btn-sm"
+              onClick={() => disminuir(pizza.id)}
+            >
+              -
+            </button>
+
+            <span className="mx-2">{pizza.count}</span>
+
+            <button
+              className="btn btn-outline-primary btn-sm"
+              onClick={() => aumentar(pizza.id)}
+            >
+              +
+            </button>
           </div>
         </div>
       ))}
 
-      <h3 style={{ marginTop: "20px" }}>
+      <h4 className="mt-4">
         Total: ${total.toLocaleString("es-CL")}
-      </h3>
+      </h4>
 
-      <button style={{ marginTop: "10px" }}>Pagar 💳</button>
+      <button className="btn btn-dark mt-2">
+        Pagar 💳
+      </button>
     </div>
   );
 };

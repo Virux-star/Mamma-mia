@@ -7,25 +7,19 @@ const Home = () => {
     <>
       <Header />
 
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-          padding: "40px 20px",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
-      >
-        {pizzas.map((pizza) => (
-          <CardPizza
-            key={pizza.id}
-            name={pizza.name}
-            price={pizza.price}
-            ingredients={pizza.ingredients}
-            img={pizza.img}
-          />
-        ))}
+      <div className="container mt-4">
+        <div className="row g-4">
+          {pizzas.map((pizza) => (
+            <div className="col-12 col-sm-6 col-md-4" key={pizza.id}>
+              <CardPizza
+                name={pizza.name}
+                price={pizza.price}
+                ingredients={pizza.ingredients}
+                img={pizza.img}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
