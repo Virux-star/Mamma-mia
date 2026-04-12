@@ -10,7 +10,7 @@ export const pizzas = [
   {
     desc: "La pizza es una preparación culinaria que consiste en un pan plano, habitualmente de forma circular, elaborado con harina de trigo, levadura, agua y sal (a veces aceite de oliva) que comúnmente se cubre con salsa de tomate, queso y otros muchos ingredientes, y que se hornea a alta temperatura, tradicionalmente en un horno de leña.",
     id: "P002",
-    img: "/Mamma-mia-hito-3/img/española.jpg",
+    img: "/Mamma-mia-hito-3/img/espanola.jpg",
     ingredients: ["mozzarella", "tomates", "jamón", "choricillo"],
     name: "española",
     price: 7250,
@@ -63,7 +63,7 @@ export const pizzaCart = [
     name: "española",
     price: 7250,
     count: 1,
-    img: "/Mamma-mia-hito-3/img/española.jpg",
+    img: "/Mamma-mia-hito-3/img/espanola.jpg",
   },
   {
     id: "P003",
