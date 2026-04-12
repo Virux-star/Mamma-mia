@@ -1,4 +1,4 @@
-import { pizzas } from "../componentes/pizzas";
+import { pizzas } from "../data/pizzas";
 import CardPizza from "../componentes/CardPizza";
 import Header from "../componentes/Header";
 
