@@ -1,8 +1,16 @@
-import { pizzas } from "../data/pizzas";
+import { useEffect, useState } from "react";
 import CardPizza from "../componentes/CardPizza";
 import Header from "../componentes/Header";
 
 const Home = () => {
+  const [pizzas, setPizzas] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/pizzas")
+      .then((res) => res.json())
+      .then((data) => setPizzas(data));
+  }, []);
+
   return (
     <>
       <Header />
