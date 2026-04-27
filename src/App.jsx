@@ -6,8 +6,8 @@ import Login from "./pages/login";
 import Register from "./pages/registro";
 import Cart from "./pages/carrito";
 import Pizza from "./pages/pizza";
-import Profile from "./pages/Profile";
-import NotFound from "./pages/NotFound";
+import Profile from "./pages/profile";
+import NotFound from "./pages/notfound";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
