@@ -1,26 +1,38 @@
 import Navbar from "./componentes/navbar";
 import Footer from "./componentes/footer";
-import Home from "./views/home";
-import Login from "./views/login";
-import Register from "./views/registro";
-import Cart from "./componentes/carrito";
-import Pizza from "./componentes/pizza"
+
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/registro";
+import Cart from "./pages/carrito";
+import Pizza from "./pages/pizza";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <Navbar />
+    <BrowserRouter>
+      <div className="d-flex flex-column min-vh-100">
+        <Navbar />
 
-      <main className="container my-4 flex-grow-1">
-        { /* <Home /> */ }
-        {<Pizza />}
-        {/* <Login /> */}
-        {/* <Register /> */}
-        {/* <Cart /> */}
-      </main>
+        <main className="container my-4 flex-grow-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/pizza/p001" element={<Pizza />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

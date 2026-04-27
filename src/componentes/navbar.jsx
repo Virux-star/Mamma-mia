@@ -1,26 +1,40 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const total = 25000;
   const token = false;
 
   return (
     <nav style={{ padding: "10px", background: "#222", color: "white" }}>
-      <button>🍕 Home</button>
+      <Link to="/">
+        <button>🍕 Home</button>
+      </Link>
 
       {token ? (
         <>
-          <button>🔓 Profile</button>
+          <Link to="/profile">
+            <button>🔓 Profile</button>
+          </Link>
+
           <button>🔒 Logout</button>
         </>
       ) : (
         <>
-          <button>🔐 Login</button>
-          <button>🔐 Register</button>
+          <Link to="/login">
+            <button>🔐 Login</button>
+          </Link>
+
+          <Link to="/register">
+            <button>🔐 Register</button>
+          </Link>
         </>
       )}
 
-      <button style={{ float: "right" }}>
-        🛒 Total: ${total.toLocaleString("es-CL")}
-      </button>
+      <Link to="/cart">
+        <button style={{ float: "right" }}>
+          🛒 Total: ${total.toLocaleString("es-CL")}
+        </button>
+      </Link>
     </nav>
   );
 };
