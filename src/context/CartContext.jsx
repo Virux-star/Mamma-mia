@@ -7,16 +7,18 @@ const CartProvider = ({ children }) => {
 
   // agregar producto
   const addToCart = (pizza) => {
+    const pizzaId = pizza.id ?? pizza.name;
+
     setCart((prev) => {
-      const existe = prev.find((p) => p.id === pizza.id);
+      const existe = prev.find((p) => p.id === pizzaId);
 
       if (existe) {
         return prev.map((p) =>
-          p.id === pizza.id ? { ...p, count: p.count + 1 } : p
+          p.id === pizzaId ? { ...p, count: p.count + 1 } : p
         );
       }
 
-      return [...prev, { ...pizza, count: 1 }];
+      return [...prev, { ...pizza, id: pizzaId, count: 1 }];
     });
   };
 

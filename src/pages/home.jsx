@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CardPizza from "../componentes/CardPizza";
 import Header from "../componentes/Header";
+import { pizzas as pizzasData } from "../data/pizzas";
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -8,7 +9,8 @@ const Home = () => {
   useEffect(() => {
     fetch("http://localhost:5000/api/pizzas")
       .then((res) => res.json())
-      .then((data) => setPizzas(data));
+      .then((data) => setPizzas(data))
+      .catch(() => setPizzas(pizzasData));
   }, []);
 
   return (
@@ -20,10 +22,17 @@ const Home = () => {
           {pizzas.map((pizza) => (
             <div className="col-12 col-sm-6 col-md-4" key={pizza.id}>
               <CardPizza
+                id={pizza.id}
                 name={pizza.name}
                 price={pizza.price}
                 ingredients={pizza.ingredients}
-                img={`http://localhost:5000${pizza.img}`}
+                img={
+                  pizza.img?.startsWith("http")
+                    ? pizza.img
+                    : pizza.img?.startsWith("/")
+                    ? pizza.img
+                    : `http://localhost:5000${pizza.img}`
+                }
               />
             </div>
           ))}

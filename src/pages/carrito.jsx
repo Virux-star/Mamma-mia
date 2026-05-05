@@ -1,29 +1,8 @@
-import { useState } from "react";
-import { pizzaCart } from "../data/pizzas";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
-  const [cart, setCart] = useState(pizzaCart);
-
-  const aumentar = (id) => {
-    setCart(cart.map(p =>
-      p.id === id ? { ...p, count: p.count + 1 } : p
-    ));
-  };
-
-  const disminuir = (id) => {
-    setCart(
-      cart
-        .map(p =>
-          p.id === id ? { ...p, count: p.count - 1 } : p
-        )
-        .filter(p => p.count > 0)
-    );
-  };
-
-  const total = cart.reduce(
-    (acc, p) => acc + p.price * p.count,
-    0
-  );
+  const { cart, increase, decrease, total } = useContext(CartContext);
 
   return (
     <div className="container">
@@ -44,7 +23,7 @@ const Cart = () => {
           <div>
             <button
               className="btn btn-outline-danger btn-sm"
-              onClick={() => disminuir(pizza.id)}
+              onClick={() => decrease(pizza.id)}
             >
               -
             </button>
@@ -53,7 +32,7 @@ const Cart = () => {
 
             <button
               className="btn btn-outline-primary btn-sm"
-              onClick={() => aumentar(pizza.id)}
+              onClick={() => increase(pizza.id)}
             >
               +
             </button>
