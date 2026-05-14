@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 const CardPizza = ({ id, name, price, ingredients, img }) => {
@@ -14,6 +15,7 @@ const CardPizza = ({ id, name, price, ingredients, img }) => {
         <hr />
 
         <p className="fw-bold mb-1">Ingredientes:</p>
+
         <ul className="list-unstyled">
           {ingredients.map((ing, i) => (
             <li key={i}>🍕 {ing}</li>
@@ -27,9 +29,11 @@ const CardPizza = ({ id, name, price, ingredients, img }) => {
         </p>
 
         <div className="d-flex justify-content-between mt-auto">
-          <button className="btn btn-outline-dark btn-sm">
-            Ver más 👀
-          </button>
+          <Link to={`/pizza/${id}`}>
+            <button className="btn btn-outline-dark btn-sm">
+              Ver más 👀
+            </button>
+          </Link>
 
           <button
             className="btn btn-dark btn-sm"

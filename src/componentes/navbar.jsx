@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const { total } = useContext(CartContext);
-  const token = false;
+
+  const { token, logout } = useContext(UserContext);
 
   return (
     <nav style={{ padding: "10px", background: "#222", color: "white" }}>
@@ -18,7 +20,9 @@ const Navbar = () => {
             <button>🔓 Profile</button>
           </Link>
 
-          <button>🔒 Logout</button>
+          <button onClick={logout}>
+            🔒 Logout
+          </button>
         </>
       ) : (
         <>
